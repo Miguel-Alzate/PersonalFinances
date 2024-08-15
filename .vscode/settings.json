@@ -1,0 +1,7 @@
+{
+    "python.analysis.extraPaths": [
+        "./appv1",
+        "./appv1"
+    ],
+    "python.analysis.autoImportCompletions": true
+}
