@@ -1,6 +1,5 @@
 from typing import Annotated, List, Optional
 from pydantic import BaseModel, EmailStr, StringConstraints
-
 from datetime import datetime
 
 class UserBase(BaseModel):
@@ -28,3 +27,10 @@ class PaginatedUsersResponse(BaseModel):
     total_pages: int
     current_page: int
     page_size: int   
+
+class UserLoggin(UserBase):
+    user_id: str
+
+class ResponseLoggin(BaseModelo):
+    user: UserLoggin
+    access_token: str
