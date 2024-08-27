@@ -5,7 +5,7 @@ from appv1.crud.users import get_user_by_email, get_user_by_id
 from core.security import create_access_token, verify_password, verify_token
 from db.database import get_db
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
-from schemas.user import ResponseLoggin, UserLoggin
+from appv1.schemas.user import ResponseLoggin, UserLoggin
 
 
 router = APIRouter()
