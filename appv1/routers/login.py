@@ -3,6 +3,7 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 from appv1.crud.users import get_user_by_email, get_user_by_id
 from core.security import create_access_token, verify_password, verify_token
+from appv1.crud.permissions import get_all_permissions
 from db.database import get_db
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from appv1.schemas.user import ResponseLoggin, UserLoggin
@@ -65,6 +66,8 @@ async def login_for_access_token(
     access_token = create_access_token(
         data={"sub": user.user_id, "rol":user.user_role}
     )
+
+    permisos = get_all_permissions(db, user.user_role)
     
     return ResponseLoggin(
         user=UserLoggin(
@@ -73,5 +76,6 @@ async def login_for_access_token(
             mail=user.mail,
             user_role=user.user_role
         ),
+        permissions=permisos,
         access_token=access_token
     )
