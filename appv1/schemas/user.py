@@ -31,6 +31,6 @@ class PaginatedUsersResponse(BaseModel):
 class UserLoggin(UserBase):
     user_id: str
 
-class ResponseLoggin(BaseModelo):
+class ResponseLoggin(BaseModel):
     user: UserLoggin
     access_token: str
